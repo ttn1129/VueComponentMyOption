@@ -1,5 +1,5 @@
 <template>
-  <select id="example-1">
+  <select :id="id">
     <option
       v-for="item in myoptions"
       :key="item.id"
