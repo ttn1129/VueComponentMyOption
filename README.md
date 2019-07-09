@@ -1,2 +1,0 @@
-# VueComponentMyOption
-Created with CodeSandbox
