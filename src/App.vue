@@ -1,23 +1,18 @@
 <template>
   <div id="app">
     <form v-on:submit.prevent>
-      <MyOption
+      <MyTextbox text="あなたの名前は？" id="person__name" defaultvalue placeholder="花子"></MyTextbox>
+      <MyRadioGroup
         text="あなたの性別は？"
         id="gender"
         :myoptions="[{id:1,name:'男'},{id:2,name:'女'}]"
         :selectedValue="{id:1}"
-      ></MyOption>
+      ></MyRadioGroup>
       <MyOption
         text="あなたの住んでいる都道府県は？"
         id="prefecture"
         :myoptions="[{id:1,name:'東京都'},{id:2,name:'それ以外'}]"
         :selectedValue="{id:1}"
-      ></MyOption>
-      <MyOption
-        text="あなたの名前は？"
-        id="name"
-        :myoptions="[{id:1,name:'花子'},{id:2,name:'忠司'},{id:3,name:'それ以外'}]"
-        :selectedValue="{id:2}"
       ></MyOption>
       <button @click="gatherResult">send</button>
     </form>
@@ -28,22 +23,34 @@
 
 <script>
 import MyOption from "./components/MyOption.vue";
+import MyTextbox from "./components/MyTextbox.vue";
+import MyRadioGroup from "./components/MyRadioGroup.vue";
 
 export default {
   name: "App",
   data: () => {
     return {
-      // result: {}
       result: []
     };
   },
   methods: {
-    gatherResult: () => {
-      this.result.push(document.getElementById("prefecture").innerText);
+    gatherResult() {
+      this.result = [];
+      this.result.push({
+        gender: document.getElementById("gender").value
+      });
+      this.result.push({
+        prefecture: document.getElementById("prefecture").value
+      });
+      this.result.push({
+        person__name: document.getElementById("person__name").value
+      });
     }
   },
   components: {
-    MyOption
+    MyOption,
+    MyTextbox,
+    MyRadioGroup
   }
 };
 </script>

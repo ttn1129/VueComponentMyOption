@@ -14,13 +14,6 @@
 
 <script>
 export default {
-  // data: () => {
-  //   return {
-  //     items: [{ id: 1, message: "Foo" }, { id: 2, message: "Bar" }]
-  //   };
-  // }
-
-  // },
   props: {
     text: {
       type: String
