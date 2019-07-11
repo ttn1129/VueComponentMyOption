@@ -1,17 +1,9 @@
 <template>
   <p>
     <MyLabel v-if=" text !== '' ">{{ text }}</MyLabel>
-    <select :id="id">
-      <option
-        v-for="item in myoptions"
-        :key="item.id"
-        :value="item.id"
-        :selected="item.id === selectedValue.id"
-      >{{ item.name }}</option>
-    </select>
+    <input class="my__text" type="text" :id="this.id" :value="this.defaultvalue">
   </p>
 </template>
-
 
 <script>
 import MyLabel from "./MyLabel.vue";
@@ -24,14 +16,19 @@ export default {
       type: String,
       required: true
     },
-    myoptions: {
-      type: Array,
-      required: true
+    defaultvalue: {
+      type: String
     },
-    selectedValue: {
-      type: Object
+    placeholder: {
+      type: String
     }
   },
   components: { MyLabel }
 };
 </script>
+
+<style scoped>
+.my__text {
+  padding: 0.2rem, 0.3rem;
+}
+</style>

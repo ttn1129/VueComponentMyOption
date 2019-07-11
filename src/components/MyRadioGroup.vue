@@ -1,17 +1,12 @@
 <template>
-  <p>
+  <div>
     <MyLabel v-if=" text !== '' ">{{ text }}</MyLabel>
-    <select :id="id">
-      <option
-        v-for="item in myoptions"
-        :key="item.id"
-        :value="item.id"
-        :selected="item.id === selectedValue.id"
-      >{{ item.name }}</option>
-    </select>
-  </p>
+    <label v-for="item in myoptions" :key="item.id">
+      <input type="radio" :name="id" :value="item.id">
+      {{ item.name }}
+    </label>
+  </div>
 </template>
-
 
 <script>
 import MyLabel from "./MyLabel.vue";
