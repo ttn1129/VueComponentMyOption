@@ -1,11 +1,12 @@
 <template>
   <p>
-    <label v-if=" text !== '' ">{{ text }}</label>
+    <MyLabel v-if=" text !== '' ">{{ text }}</MyLabel>
     <input class="my__text" type="text" :id="this.id" :value="this.defaultvalue">
   </p>
 </template>
 
 <script>
+import MyLabel from "./MyLabel.vue";
 export default {
   props: {
     text: {
@@ -21,7 +22,8 @@ export default {
     placeholder: {
       type: String
     }
-  }
+  },
+  components: { MyLabel }
 };
 </script>
 

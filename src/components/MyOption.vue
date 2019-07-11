@@ -1,6 +1,6 @@
 <template>
   <p>
-    <label v-if=" text !== '' ">{{ text }}</label>
+    <MyLabel v-if=" text !== '' ">{{ text }}</MyLabel>
     <select :id="id">
       <option
         v-for="item in myoptions"
@@ -12,7 +12,9 @@
   </p>
 </template>
 
+
 <script>
+import MyLabel from "./MyLabel.vue";
 export default {
   props: {
     text: {
@@ -29,6 +31,7 @@ export default {
     selectedValue: {
       type: Object
     }
-  }
+  },
+  components: { MyLabel }
 };
 </script>

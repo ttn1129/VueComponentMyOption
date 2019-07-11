@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <form v-on:submit.prevent>
+    <SubTitle>アンケート</SubTitle>
+    <Description>アンケートにご協力ください</Description>
+    <FormSection>
       <MyTextbox text="あなたの名前は？" id="person__name" defaultvalue placeholder="花子"></MyTextbox>
       <MyRadioGroup
         text="あなたの性別は？"
@@ -15,7 +17,7 @@
         :selectedValue="{id:1}"
       ></MyOption>
       <button @click="gatherResult">send</button>
-    </form>
+    </FormSection>
     <!-- <div v-if=" Object.keys(result).length !== 0 ">{{ result }}</div> -->
     <div v-if=" this.result.length !== 0 ">{{ result }}</div>
   </div>
@@ -25,6 +27,9 @@
 import MyOption from "./components/MyOption.vue";
 import MyTextbox from "./components/MyTextbox.vue";
 import MyRadioGroup from "./components/MyRadioGroup.vue";
+import FormSection from "./components/FormSection.vue";
+import SubTitle from "./components/SubTitle.vue";
+import Description from "./components/Description.vue";
 
 export default {
   name: "App",
@@ -36,9 +41,14 @@ export default {
   methods: {
     gatherResult() {
       this.result = [];
-      this.result.push({
-        gender: document.getElementById("gender").value
-      });
+      const genderCheckedNode = document.querySelector(
+        "input[name = gender]:checked"
+      );
+      if (genderCheckedNode) {
+        this.result.push({
+          gender: genderCheckedNode.value
+        });
+      }
       this.result.push({
         prefecture: document.getElementById("prefecture").value
       });
@@ -50,7 +60,10 @@ export default {
   components: {
     MyOption,
     MyTextbox,
-    MyRadioGroup
+    MyRadioGroup,
+    SubTitle,
+    Description,
+    FormSection
   }
 };
 </script>

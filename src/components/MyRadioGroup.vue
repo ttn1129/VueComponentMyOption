@@ -1,6 +1,6 @@
 <template>
   <div>
-    <label v-if=" text !== '' ">{{ text }}</label>
+    <MyLabel v-if=" text !== '' ">{{ text }}</MyLabel>
     <label v-for="item in myoptions" :key="item.id">
       <input type="radio" :name="id" :value="item.id">
       {{ item.name }}
@@ -9,6 +9,7 @@
 </template>
 
 <script>
+import MyLabel from "./MyLabel.vue";
 export default {
   props: {
     text: {
@@ -25,6 +26,7 @@ export default {
     selectedValue: {
       type: Object
     }
-  }
+  },
+  components: { MyLabel }
 };
 </script>
